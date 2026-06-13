@@ -2,7 +2,7 @@
   "name": "rezanoel",
   "private": true,
   "version": "0.0.0",
-  "homepage": "rezanoel.ir",
+  "homepage": "https://rezanoel.ir",
   "type": "module",
   "scripts": {
   "dev": "vite",
