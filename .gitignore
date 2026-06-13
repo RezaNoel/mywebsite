@@ -1,24 +1,9 @@
-# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
+# نادیده گرفتن تمام فایل‌ها و پوشه‌های پروژه به صورت پیش‌فرض
+*
 
-node_modules
-# dist
-# dist-ssr
-*.local
+# استثنا کردن پوشه dist و تمام محتویات داخل آن
+!/dist/
+!/dist/**
 
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
-.DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+# استثنا کردن خود فایل .gitignore (تا گیت تنظیمات را حفظ کند)
+!.gitignore
