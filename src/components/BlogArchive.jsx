@@ -1,21 +1,20 @@
 import React, { useState, useMemo } from 'react';
+import { useTranslation } from 'react-i18next'; // 👈 اضافه شد
 import { blogList } from '../data/blogList';
 
 export default function BlogArchive({ darkMode }) {
+  const { t } = useTranslation(); // 👈 فراخوانی هوک ترجمه
   const [searchQuery, setSearchQuery] = useState('');
-  const [sortBy, setSortBy] = useState('newest'); // newest | oldest
+  const [sortBy, setSortBy] = useState('newest');
 
   // عملیات فیلتر و مرتب‌سازی بهینه با useMemo
   const filteredAndSortedPosts = useMemo(() => {
-    // ۱. فیلتر بر اساس سرچ (عنوان یا توضیحات)
     const filtered = blogList.filter(post => 
       post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       post.desc.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
-    // ۲. مرتب‌سازی براساس تاریخ
     return filtered.sort((a, b) => {
-      // تبدیل تاریخ شمسی/عددی ساده به فرمت قابل مقایسه در صورت نیاز
       if (sortBy === 'newest') {
         return b.date.localeCompare(a.date);
       } else {
@@ -33,21 +32,21 @@ export default function BlogArchive({ darkMode }) {
         {/* هدر صفحه آرشیو */}
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-5xl font-black mb-4">
-            وبلاگ <span className="text-caribbean-green">نوئل</span>
+            {t('blogArchiveTitle')}<span className="text-caribbean-green">{t('blogArchiveTitleSpan')}</span>
           </h2>
           <p className={`text-sm md:text-base ${darkMode ? 'text-stone' : 'text-slate-600'}`}>
-            آخرین مقالات، آموزش‌ها و ترفندهای دنیای برنامه‌نویسی و تکنولوژی
+            {t('blogArchiveDesc')}
           </p>
         </div>
 
-        {/* 👈 ابزارهای سرچ و فیلتر (پک مینی‌مال) */}
+        {/* ابزارهای سرچ و فیلتر */}
         <div className="flex flex-col sm:flex-row gap-4 justify-between items-center mb-10 text-right" dir="rtl">
           
           {/* باکس سرچ آنی */}
           <div className="relative w-full sm:w-80">
             <input 
               type="text"
-              placeholder="جستجو در میان مقالات..."
+              placeholder={t('searchPlaceholder')}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className={`w-full px-4 py-2.5 rounded-xl border text-sm outline-none transition-all ${
@@ -61,7 +60,7 @@ export default function BlogArchive({ darkMode }) {
 
           {/* دکمه‌های مرتب‌سازی تاریخ */}
           <div className="flex items-center gap-2 w-full sm:w-auto justify-start sm:justify-end">
-            <span className={`text-xs font-medium ${darkMode ? 'text-stone' : 'text-slate-500'}`}>مرتب‌سازی:</span>
+            <span className={`text-xs font-medium ${darkMode ? 'text-stone' : 'text-slate-500'}`}>{t('sortByLabel')}:</span>
             <div className={`flex p-0.5 rounded-lg border text-xs ${
               darkMode ? 'bg-pine/20 border-forest' : 'bg-slate-200/60 border-slate-300'
             }`}>
@@ -73,7 +72,7 @@ export default function BlogArchive({ darkMode }) {
                     : (darkMode ? 'text-stone hover:text-white' : 'text-slate-600')
                 }`}
               >
-                جدیدترین
+                {t('newest')}
               </button>
               <button 
                 onClick={() => setSortBy('oldest')}
@@ -83,16 +82,16 @@ export default function BlogArchive({ darkMode }) {
                     : (darkMode ? 'text-stone hover:text-white' : 'text-slate-600')
                 }`}
               >
-                قدیمی‌ترین
+                {t('oldest')}
               </button>
             </div>
           </div>
 
         </div>
 
-        {/* 👈 لیست کارت‌های وبلاگ */}
+        {/* لیست کارت‌های وبلاگ */}
         {filteredAndSortedPosts.length === 0 ? (
-          <div className="text-center py-20 opacity-50">نتیجه‌ای برای جستجوی شما یافت نشد.</div>
+          <div className="text-center py-20 opacity-50">{t('noResults')}</div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-right" dir="rtl">
             {filteredAndSortedPosts.map((post) => (
@@ -107,10 +106,11 @@ export default function BlogArchive({ darkMode }) {
                 <div>
                   <div className="flex justify-between items-center mb-4">
                     <span className="text-[10px] tracking-wider font-mono opacity-50">{post.date}</span>
+                    {/* 👈 داینامیک شدن برچسب مقاله */}
                     <span className={`text-[10px] font-bold px-2.5 py-1 rounded-full ${
                       darkMode ? 'bg-forest/40 text-mountain-meadow' : 'bg-emerald-50 text-emerald-700'
                     }`}>
-                      مقاله
+                      {t('blogBadge')}
                     </span>
                   </div>
                   
@@ -123,7 +123,7 @@ export default function BlogArchive({ darkMode }) {
                   </p>
                 </div>
 
-                {/* دکمه ورود به مقاله با کوئری‌پارامتر ست‌شده */}
+                {/* 👈 داینامیک شدن متن دکمه مطالعه نوشته */}
                 <a 
                   href={`/?page=${post.slug}`}
                   className={`w-full text-center py-2 rounded-xl text-xs font-bold border transition-all ${
@@ -132,7 +132,7 @@ export default function BlogArchive({ darkMode }) {
                       : 'border-slate-200 bg-slate-50 hover:bg-emerald-500 hover:text-white'
                   }`}
                 >
-                  مطالعه مقاله ←
+                  {t('readPost')}
                 </a>
               </article>
             ))}

@@ -1,5 +1,21 @@
 @import "tailwindcss";
+/* فایل index.css */
 
+.markdown-body h1 { @apply text-3xl font-black my-6 block border-b pb-2 dark:border-slate-800; }
+.markdown-body h2 { @apply text-2xl font-bold my-4 block; }
+.markdown-body h3 { @apply text-xl font-bold my-3 block; }
+.markdown-body p { @apply mb-4 leading-relaxed text-justify block; }
+.markdown-body strong { @apply font-bold text-caribbean-green; }
+
+.markdown-body ul { @apply list-disc ps-6 my-4 space-y-2; }
+[dir="rtl"] .markdown-body ul { @apply pr-6 pl-0; }
+
+.markdown-body ol { @apply list-decimal ps-6 my-4 space-y-2; }
+[dir="rtl"] .markdown-body ol { @apply pr-6 pl-0; }
+
+.markdown-body code { @apply bg-emerald-500/10 text-caribbean-green font-mono text-sm px-1.5 py-0.5 rounded; }
+.markdown-body pre { @apply bg-slate-900 text-slate-100 p-4 rounded-xl overflow-x-auto my-6 border border-slate-800 block text-left font-mono; }
+.markdown-body pre code { @apply bg-transparent p-0 text-slate-100; }
 @theme {
   /* رنگ‌های اصلی */
   --color-rich-black: #021B1A;
