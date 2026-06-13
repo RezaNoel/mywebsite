@@ -7,13 +7,18 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 const sampleProjects = [
-  { id: 1, title: 'NoLingo', desc: 'Obsidian language learning plugin via flashcards.', tech: ['TypeScript', 'Obsidian API'], link: '#' },
-  { id: 2, title: 'Minecraft Economy SMP', desc: 'Chunk selling real-estate architecture & system design.', tech: ['Java', 'Spigot', 'MySQL'], link: '#' },
+  { id: 1, title: 'RAG Noel', desc: 'Offline RAG pipeline with FAISS, SentenceTransformers, and LLaMA (Ollama) for internal documents.', tech: ['Python', 'LLaMA 3'], link: 'https://github.com/RezaNoel/ragnoel' },
+  // { id: 2, title: 'Mamanfateme', desc: 'A website selling homemade food as an app first using DRF and mysql, the possibility of adding and removing the number of selected food, the possibility of rating the food, the possibility of registering a comment under the food, the possibility of searching for food using Jquery, calculating and displaying the total number of orders and The number of each type and the final amount and discount and tax in the invoice before payment, the possibility of registration with mobile number.', tech: ['React', 'Django', 'DRF'], link: 'https://github.com/RezaNoel/Mamanfateme' },
+  { id: 3, title: 'Boroobia', desc: 'A website for buying plane tickets and booking hotels with a special database for registering hotel managers and defining each hotel room daily and pricing in different ranges for each room, the possibility of defining a discount code, registering with a mobile number, searching and various filters. including the lowest and highest price and the number of hotel stars, the possibility of placing one or more hotels in the suggested list and displaying them in embedded places, using DRF and Mysq', tech: ['Django', 'HTML','CSS','JavaScript'], link: 'https://github.com/RezaNoel/brobia' },
 ];
 
 const sampleVideos = [
-  { id: 1, title: 'How I Build Clean Architecture in Django', duration: '12:45', link: 'https://youtube.com/...', views: '1.2K' },
-  { id: 2, title: 'Learning Armenian as a Software Developer', duration: '08:30', link: 'https://youtube.com/...', views: '850' },
+  // { id: 1, title: 'سیستم شخصی من برای یادگیری زبان با Obsidian (کاملا عملی)', duration: '43:58', link: 'https://youtu.be/LoH702Nxxs8', views: '511' },
+  { id: 2, title: 'بهتری سیستم نوت‌برداری برای دانشجوها با Obsidian | آموزش کامل', duration: '26:01', link: 'https://youtu.be/SWbeaGgxVq8', views: '864' },
+  { id: 3, title: 'چطور ذهنمون رو مثل کامپیوتر دسته‌بندی کنیم؟ (آموزش کاربردی Obsidian)', duration: '22:22', link: 'https://youtu.be/UQN63sucxA4', views: '1302' },
+  // { id: 4, title: 'چطور تو یک ماه آلمانی یاد گرفتم؟', duration: '21:44', link: 'https://youtu.be/HUREoS5TaOs', views: '332' },
+  { id: 5, title: 'یادگیری بدون فراموشی با یک پلاگین ساده (آموزش کاربردی Obsidian)', duration: '14:08', link: 'https://youtu.be/-QUc57R0nOE', views: '539' },
+  // { id: 6, title: 'آموزش کامل Markdown به زبان ساده در 28 دقیقه', duration: '28:11', link: 'https://youtu.be/HeO3sTNuIq8', views: '220' },
 ];
 
 export default function LatestContent({ darkMode }) {
@@ -178,7 +183,7 @@ export default function LatestContent({ darkMode }) {
               {t('latestBlogsTitle', 'آخرین ')}
               <span className="text-red-500">{t('latestVideos')}</span>
             </h2>
-            <a href="https://youtube.com/@yourchannel" target="_blank" rel="noreferrer" className="text-xs font-mono text-red-500 hover:underline">
+            <a href="https://youtube.com/@chibodeh" target="_blank" rel="noreferrer" className="text-xs font-mono text-red-500 hover:underline">
               {t('viewAll')} →
             </a>
           </div>

@@ -74,7 +74,7 @@ export default function Hero({ darkMode }) {
               {t('heroCTA')}
             </a>
             <a 
-              href="https://youtube.com/@yourchannel" 
+              href="https://youtube.com/@chibodeh" 
               target="_blank" 
               rel="noreferrer" 
               className={`w-full sm:w-auto border px-8 py-4 rounded-xl font-bold text-sm transition-all active:scale-95 flex items-center justify-center gap-2 ${
